@@ -91,6 +91,15 @@ open class Context
 		{
 			return .bool(boolLiteral)
 		}
+        else if let dict = value as? [String: Any] {
+            var tvDict: [String: Token.Value] = [:]
+            for (key, val) in dict {
+                if let value = parseAny(val) {
+                    tvDict[key] = value
+                }
+            }
+            return .dictionary(tvDict)
+        }
 		else if value == nil
 		{
 			return .nil
@@ -100,7 +109,7 @@ open class Context
 			return nil
 		}
 	}
-
+    
 	internal func parseString(_ token: String, onlyIfLiteral: Bool = false) -> Token.Value?
 	{
 		let trimmedToken = token.trimmingWhitespaces

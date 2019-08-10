@@ -7,7 +7,7 @@
 
 import Foundation
 import STRFTimeFormatter
-import HTMLEntities
+//import HTMLEntities
 
 /// A class representing a filter. Filters transform `Token.Value` objects into other `Token.Value` objects, and might
 /// accept one or more `Token.Value` parameters. Filters are identified by the `identifier` value, and only one filter
@@ -31,8 +31,7 @@ open class Filter
 extension Filter
 {
 	static let builtInFilters: [Filter] = [
-		abs, append, atLeast, atMost, capitalize, ceil, concat, compact, date, `default`, dividedBy, downcase, escape,
-		escapeOnce, first, floor, join, last, leftStrip, map, minus, modulo, newlineToBr, plus, prepend, remove,
+		abs, append, atLeast, atMost, capitalize, ceil, concat, compact, date, `default`, dividedBy, downcase, first, floor, join, last, leftStrip, map, minus, modulo, newlineToBr, plus, prepend, remove,
 		removeFirst, replace, replaceFirst, reverse, round, rightStrip, size, slice, sort, sortNatural, split, strip,
 		stripHTML, stripNewlines, times, truncate, truncateWords, uniq, upcase, urlDecode, urlEncode
 	]
@@ -271,19 +270,19 @@ extension Filter
 		return .string(inputString.lowercased())
 	}
 
-	static let escape = Filter(identifier: "escape")
-	{
-		(input, parameters) -> Token.Value in
-
-		return .string(input.stringValue.htmlEscape(decimal: true, useNamedReferences: true))
-	}
-
-	static let escapeOnce = Filter(identifier: "escape_once")
-	{
-		(input, parameters) -> Token.Value in
-
-		return .string(input.stringValue.htmlUnescape().htmlEscape(decimal: true, useNamedReferences: true))
-	}
+//    static let escape = Filter(identifier: "escape")
+//    {
+//        (input, parameters) -> Token.Value in
+//
+//        return .string(input.stringValue.htmlEscape(decimal: true, useNamedReferences: true))
+//    }
+//
+//    static let escapeOnce = Filter(identifier: "escape_once")
+//    {
+//        (input, parameters) -> Token.Value in
+//
+//        return .string(input.stringValue.htmlUnescape().htmlEscape(decimal: true, useNamedReferences: true))
+//    }
 
 	static let first = Filter(identifier: "first")
 	{
